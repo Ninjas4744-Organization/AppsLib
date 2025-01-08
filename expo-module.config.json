@@ -1,0 +1,17 @@
+{
+  "platforms": [
+    "apple",
+    "android",
+    "web"
+  ],
+  "apple": {
+    "modules": [
+      "Ninjas4744LibModule"
+    ]
+  },
+  "android": {
+    "modules": [
+      "com.ninjas4744.lib.Ninjas4744LibModule"
+    ]
+  }
+}
