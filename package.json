@@ -28,7 +28,11 @@
   "author": "Kfiros <me@kfiros.com> (realKfiros)",
   "license": "MIT",
   "homepage": "https://github.com/Ninjas4744-Organization/AppsLib#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@emotion/native": "^11.0.0",
+    "expo": "~52.0.0",
+    "react-native": "0.76.0"
+  },
   "devDependencies": {
     "@types/react": "~18.3.12",
     "expo-module-scripts": "^4.0.2",
@@ -38,6 +42,7 @@
   "peerDependencies": {
     "expo": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "@emotion/native": "*"
   }
 }

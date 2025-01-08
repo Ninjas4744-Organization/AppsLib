@@ -1,73 +1,43 @@
-import { useEvent } from 'expo';
-import Ninjas4744Lib, { Ninjas4744LibView } from '@ninjas4744/lib';
-import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { Autocomplete } from "@ninjas4744/lib/ui/Autocomplete";
+import { Checkbox } from "@ninjas4744/lib/ui/Checkbox";
+import { Dropdown } from "@ninjas4744/lib/ui/Dropdown";
+import { Radio } from "@ninjas4744/lib/ui/Radio";
+import { TextField } from "@ninjas4744/lib/ui/TextField";
+import { useState } from "react";
+import { SafeAreaView } from "react-native";
 
-export default function App() {
-  const onChangePayload = useEvent(Ninjas4744Lib, 'onChange');
+const App = () =>
+{
+    const [name, setName] = useState();
+    const [team, setTeam] = useState();
+    const [drivetrain, setDrivetrain] = useState();
+    const [canDefend, setCanDefend] = useState(false);
+    const [alliance, setAlliance] = useState("blue");
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
-        <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{Ninjas4744Lib.PI}</Text>
-        </Group>
-        <Group name="Functions">
-          <Text>{Ninjas4744Lib.hello()}</Text>
-        </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await Ninjas4744Lib.setValueAsync('Hello from JS!');
-            }}
-          />
-        </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
-        </Group>
-        <Group name="Views">
-          <Ninjas4744LibView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
-        </Group>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+    const teams = [
+        "Orbit #1690",
+        "Elysium #1937",
+        "Neat Team #1943",
+        "Ninjas #4744",
+        "Galaxia #5987"
+    ];
 
-function Group(props: { name: string; children: React.ReactNode }) {
-  return (
-    <View style={styles.group}>
-      <Text style={styles.groupHeader}>{props.name}</Text>
-      {props.children}
-    </View>
-  );
-}
+    const drivetrains = [
+        "Swerve",
+        "Tank",
+        "Mecanum"
+    ];
 
-const styles = {
-  header: {
-    fontSize: 30,
-    margin: 20,
-  },
-  groupHeader: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  group: {
-    margin: 20,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 20,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-  },
-  view: {
-    flex: 1,
-    height: 200,
-  },
+    return (
+      <SafeAreaView>
+          <TextField label="Your Name" value={name} onChangeText={setName} />
+          <Autocomplete label="Team" value={team} onChangeText={setTeam} suggestions={teams} />
+          <Dropdown label="Drivetrain" value={drivetrain} onValueChange={setDrivetrain} options={drivetrains} />
+          <Checkbox label="Can defend" checked={canDefend} onValueChange={setCanDefend} />
+          <Radio label="Blue alliance" selected={alliance === "blue"} onValueChange={() => setAlliance("blue")} />
+          <Radio label="Red alliance" selected={alliance === "red"} onValueChange={() => setAlliance("red")} />
+      </SafeAreaView>
+    );
 };
+
+export default App;
