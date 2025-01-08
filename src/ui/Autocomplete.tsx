@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDefineField } from "../hooks/defineField";
-import { FlatList, TextInput, TouchableOpacity, View, Text } from "react-native";
+import { FlatList, TextInput, TouchableOpacity, View, Text, TouchableWithoutFeedback } from "react-native";
 
 export const Autocomplete = ({ label, value, onChangeText, suggestions }) =>
 {
@@ -32,34 +32,26 @@ export const Autocomplete = ({ label, value, onChangeText, suggestions }) =>
         }
     };
 
-    useEffect(() =>
-    {
-        if (isFocused)
-            document.addEventListener("mousedown", handleOutsideClick);
-        else
-            document.removeEventListener("mousedown", handleOutsideClick);
-
-        return () => document.removeEventListener("mousedown", handleOutsideClick);
-    }, [isFocused]);
-
-    return <View {...containerProps} ref={containerRef}>
-        <Text {...labelProps}>{label}</Text>
-        <TextInput
-          {...inputProps}
-          value={value}
-          onChangeText={handleChangeText}
-        />
-        {isFocused && filteredSuggestions.length > 0 && (
-          <FlatList
-            {...floatingListProps}
-            data={filteredSuggestions}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => handleSelectSuggestion(item)}>
-                  <Text {...floatingListItemProps}>{item}</Text>
-              </TouchableOpacity>
+    return <TouchableWithoutFeedback style={{zIndex: isFocused ? 999 : 1}} onPress={handleOutsideClick}>
+        <View {...containerProps} ref={containerRef}>
+            <Text {...labelProps}>{label}</Text>
+            <TextInput
+              {...inputProps}
+              value={value}
+              onChangeText={handleChangeText}
+            />
+            {isFocused && filteredSuggestions.length > 0 && (
+              <FlatList
+                {...floatingListProps}
+                data={filteredSuggestions}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => handleSelectSuggestion(item)}>
+                      <Text {...floatingListItemProps}>{item}</Text>
+                  </TouchableOpacity>
+                )}
+              />
             )}
-          />
-        )}
-    </View>;
+        </View>
+    </TouchableWithoutFeedback>;
 };
