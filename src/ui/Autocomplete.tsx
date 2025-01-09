@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useDefineField } from "../hooks/defineField";
 import { FlatList, TextInput, TouchableOpacity, View, Text, TouchableWithoutFeedback } from "react-native";
 
-export const Autocomplete = ({ label, value, onChangeText, suggestions }) =>
+const Autocomplete = ({ label, value, onChangeText, suggestions }) =>
 {
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const containerRef = useRef<any>(null);
@@ -55,3 +55,5 @@ export const Autocomplete = ({ label, value, onChangeText, suggestions }) =>
         </View>
     </TouchableWithoutFeedback>;
 };
+
+export default Autocomplete;

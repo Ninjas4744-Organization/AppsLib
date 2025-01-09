@@ -1,10 +1,6 @@
-import { Autocomplete } from "@ninjas4744/lib/ui/Autocomplete";
-import { Checkbox } from "@ninjas4744/lib/ui/Checkbox";
-import { Dropdown } from "@ninjas4744/lib/ui/Dropdown";
-import { Radio } from "@ninjas4744/lib/ui/Radio";
-import { TextField } from "@ninjas4744/lib/ui/TextField";
 import { useState } from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView } from "react-native";
+import { Autocomplete, Checkbox, Dropdown, Radio, TextField, Stack } from "@ninjas4744/lib/ui";
 
 const App = () =>
 {
@@ -29,15 +25,15 @@ const App = () =>
     ];
 
     return (
-      <SafeAreaView style={{backgroundColor: 'white'}}>
-          <View style={{padding: 30}}>
+      <SafeAreaView style={{ backgroundColor: "white" }}>
+          <Stack direction="column" style={{ padding: 30 }}>
               <TextField label="Your Name" value={name} onChangeText={setName} />
               <Autocomplete label="Team" value={team} onChangeText={setTeam} suggestions={teams} />
               <Dropdown label="Drivetrain" value={drivetrain} onValueChange={setDrivetrain} options={drivetrains} />
               <Checkbox label="Can defend" checked={canDefend} onValueChange={setCanDefend} />
               <Radio label="Blue alliance" selected={alliance === "blue"} onValueChange={() => setAlliance("blue")} />
               <Radio label="Red alliance" selected={alliance === "red"} onValueChange={() => setAlliance("red")} />
-          </View>
+          </Stack>
       </SafeAreaView>
     );
 };

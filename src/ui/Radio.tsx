@@ -2,7 +2,7 @@ import { css } from "@emotion/native";
 import { TouchableOpacity, View, Text } from "react-native";
 import { useDefineField } from "../hooks/defineField";
 
-export const Radio = ({ label, selected, onValueChange }) =>
+const Radio = ({ label, selected, onValueChange }) =>
 {
     const { containerProps } = useDefineField({ value: selected });
 
@@ -36,3 +36,5 @@ export const Radio = ({ label, selected, onValueChange }) =>
         <Text style={labelStyle}>{label}</Text>
     </TouchableOpacity>;
 };
+
+export default Radio

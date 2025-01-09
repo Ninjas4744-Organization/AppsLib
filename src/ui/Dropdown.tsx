@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { useDefineField } from "../hooks/defineField";
 
-export const Dropdown = ({ label, value, onValueChange, options }) =>
+const Dropdown = ({ label, value, onValueChange, options }) =>
 {
     const { containerProps, labelProps, inputProps, floatingListProps, floatingListItemProps, isFocused } = useDefineField({ value, debounce: 150 });
 
@@ -21,3 +21,5 @@ export const Dropdown = ({ label, value, onValueChange, options }) =>
         </View>
     </TouchableOpacity>;
 };
+
+export default Dropdown;

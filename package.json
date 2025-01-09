@@ -1,6 +1,6 @@
 {
   "name": "@ninjas4744/lib",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A package of components and utilities used in apps written by FRC team Ninjas #4744",
   "main": "build/index.js",
   "types": "build/index.d.ts",

@@ -2,7 +2,7 @@ import { TouchableOpacity, View, Text } from "react-native";
 import { useDefineField } from "../hooks/defineField";
 import { css } from "@emotion/native";
 
-export const Checkbox = ({ label, checked, onValueChange }) => {
+const Checkbox = ({ label, checked, onValueChange }) => {
   const {containerProps} = useDefineField({value: checked});
 
   const checkboxStyle = css`
@@ -35,3 +35,5 @@ export const Checkbox = ({ label, checked, onValueChange }) => {
       <Text style={labelStyle}>{label}</Text>
     </TouchableOpacity>;
 };
+
+export default Checkbox;

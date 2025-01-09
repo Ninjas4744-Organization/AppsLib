@@ -1,7 +1,7 @@
 import { View, Text, TextInput } from "react-native";
 import { useDefineField } from "../hooks/defineField";
 
-export const TextField = ({ label, value, onChangeText }) =>
+const TextField = ({ label, value, onChangeText }) =>
 {
   const { containerProps, labelProps, inputProps } = useDefineField({ value });
 
@@ -10,3 +10,5 @@ export const TextField = ({ label, value, onChangeText }) =>
     <TextInput {...inputProps} value={value} onChangeText={onChangeText} />
   </View>;
 };
+
+export default TextField;
