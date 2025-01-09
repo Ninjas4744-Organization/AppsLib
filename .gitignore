@@ -55,3 +55,4 @@ yarn-error.log
 
 # Expo
 .expo/*
+node_modules
