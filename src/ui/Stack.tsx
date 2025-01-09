@@ -10,14 +10,14 @@ interface StackProps {
     style?: ViewStyle | ViewStyle[];
 }
 
-const Stack: React.FC<StackProps> = ({ direction, children, style, ...rest }) => {
+const Stack: React.FC<StackProps> = ({ direction, children, style}) => {
     const stackStyle = css`
         width: 100%;
         display: flex;
         flex-direction: ${direction};
     `;
 
-    return <View style={[stackStyle, style]} {...rest}>{children}</View>;
+    return <View style={[stackStyle, style]}>{children}</View>;
 };
 
 export default Stack;
